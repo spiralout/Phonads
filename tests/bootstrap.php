@@ -11,19 +11,5 @@
  * @license http://www.opensource.org/licenses/BSD-3-Clause
  * @link http://github.com/spiralout/Phonads
  */
-function phonadsAutoLoader($className) {
-    $file = __DIR__ .
-        DIRECTORY_SEPARATOR .
-        '..' .
-        DIRECTORY_SEPARATOR .
-        'library' .
-        DIRECTORY_SEPARATOR .
-        str_replace('\\', DIRECTORY_SEPARATOR, $className) .
-        '.php';
-    
-    if (file_exists($file)) {
-        include($file);
-    }
-}
-
-spl_autoload_register('phonadsAutoLoader');
+require_once __DIR__ .'/../library/Phonads.php';
+ 

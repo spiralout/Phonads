@@ -13,6 +13,28 @@
  */
 
 /**
+ * Flatten an array. Takes this: [[1],[2],[3],[4]] and turns it into this: [1,2,3,4]
+ *  
+ * @param array $a
+ * @return array
+ */    
+function array_flatten(array $a) {
+    $ab = [];
+
+    if (!is_array($a)) return [];
+
+    foreach ($a as $value) {
+        if (is_array($value)) {
+            $ab = array_merge($ab, array_flatten($value));
+        } else {
+            array_push($ab, $value);
+        }
+    }
+
+    return $ab;
+}
+    
+/**
  * Phonads library autoloader
  * 
  * @param string $className
