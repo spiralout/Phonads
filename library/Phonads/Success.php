@@ -14,34 +14,36 @@
 namespace Phonads;
 
 /**
- * Option container that represents some value
+ * Represents a successful computation. A Success object may contain
+ * a value to provide additional information about the successful 
+ * computation.
  */
-class Some implements Option {
+class Success implements Validation {
 
     /**
      * Constructor
      * 
      * @param mixed $value
      */
-    function __construct($value) {
+    function __construct($value = null) {
         $this->value = $value;
-    }
-
-    /**
-     * Map applies the supplied function to the contained value
-     * 
-     * @param Closure $f should be a function that returns either a plain value or an Option
-     * @return \Phonads\Option
-     */
-    function map(\Closure $f) {
-        return Match::on($f($this->value))
-            ->Option(function($o) { return $o; })
-            ->any(function($x) { return new self($x); })
-            ->value();
     }
     
     /**
-     * Extract the value contained in the Some object
+     * Map applies the supplied function to the contained value
+     * 
+     * @param \Closure $f
+     * @return mixed
+     */
+    function map(\Closure $f) {
+        return Match::on($f($this->value))
+            ->Validation(function($o) { return $o; })
+            ->any(function($x) { return new self($x); })
+            ->value();
+    }
+
+    /**
+     * Extract the value contained in the Success object
      * 
      * @return mixed
      */

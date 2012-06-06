@@ -127,7 +127,7 @@ class Match {
      * 
      *     Match::on($value)
      *         ->Some(function($v) { ... })
-     *         ->Tuple(['int', 'Some'], function($i, $s) { ... })
+     *         ->Tuple(['integer', 'Some'], function($i, $s) { ... })
      *         ->any(function($_) { echo "Default action!"; });
      * 
      * @param \Closure $function
