@@ -1,2 +1,5 @@
-A Monad Library for PHP 5.4
-===========================
+Phonads: A Monad Library for PHP 5.4
+====================================
+
+
+
