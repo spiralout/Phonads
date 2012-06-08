@@ -18,7 +18,7 @@ namespace Phonads;
  * a value to provide additional information about the failed 
  * computation.
  */
-class Failure implements Validation {
+class Failure implements Monad, Validation {
 
     /**
      * Constructor

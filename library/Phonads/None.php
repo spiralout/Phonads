@@ -16,7 +16,7 @@ namespace Phonads;
 /**
  * Option container that represents no value
  */
-class None implements Option {
+class None implements Monad, Option {
 
     /**
      * Map always returns another instance of None
@@ -27,4 +27,13 @@ class None implements Option {
     function map(\Closure $f) {
         return new self;
     }
-}
+    
+    /**
+     * None has no value
+     * 
+     * @throws Exception
+     */
+    function value() {
+        throw new \Exception('Cannot get the value of None');
+    }
+} 

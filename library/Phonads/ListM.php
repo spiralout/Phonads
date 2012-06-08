@@ -16,7 +16,7 @@ namespace Phonads;
 /**
  * Monadic List class
  */
-class ListM implements \ArrayAccess, \Countable, \Iterator {
+class ListM implements Monad, \ArrayAccess, \Countable, \Iterator {
 
     /**
      * Constructor

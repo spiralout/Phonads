@@ -16,7 +16,7 @@ namespace Phonads;
 /**
  * Option container that represents some value
  */
-class Some implements Option {
+class Some implements Monad, Option {
 
     /**
      * Constructor
