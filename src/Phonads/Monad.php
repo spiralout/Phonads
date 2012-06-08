@@ -26,7 +26,7 @@ interface Monad {
      */
     function map(\Closure $f);
     
-    /*
+    /**
      * Get the value contained in the Monad
      * 
      * @return mixed
