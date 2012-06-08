@@ -65,8 +65,14 @@ class TransactionContext implements Monad {
      */
     function commit() {
         return Match::on($this->result)
-            ->Failure(function($r) { $this->transaction->rollback(); return $r; })
-            ->Success(function($r) { $this->transaction->commit(); return $r; })
+            ->Failure(function($r) { 
+                $this->transaction->rollback(); 
+                return new self($this->transaction, $r);                 
+            })
+            ->Success(function($r) { 
+                $this->transaction->commit(); 
+                return new self($this->transaction, $r);                 
+            })
             ->value();
     }
     
