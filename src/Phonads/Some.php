@@ -17,7 +17,8 @@ namespace Phonads;
  * Option container that represents some value
  */
 class Some implements Monad, Option {
-
+    use ProxyMap;
+    
     /**
      * Constructor
      * 

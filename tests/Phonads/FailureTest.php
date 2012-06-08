@@ -20,7 +20,15 @@ class Phonads_FailureTest extends PHPUnit_Framework_TestCase {
         $this->assertTrue((new Failure())->map(function($x) { return 1; }) instanceof Failure);
     }
     
+    function testProxyMap() {
+        $this->assertTrue((new Failure(new FailureTestProxyMap()))->test() instanceof Failure);
+    }
+    
     function testFailureValue() {
         $this->assertEquals(42, (new Failure(42))->value());
     }
+}
+
+class FailureTestProxyMap {
+    function test() { return 1; }
 }

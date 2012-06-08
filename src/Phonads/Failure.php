@@ -19,7 +19,8 @@ namespace Phonads;
  * computation.
  */
 class Failure implements Monad, Validation {
-
+    use ProxyMap;
+    
     /**
      * Constructor
      * 

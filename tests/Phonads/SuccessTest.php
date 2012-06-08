@@ -35,5 +35,13 @@ class Phonads_SuccessTest extends PHPUnit_Framework_TestCase {
                 ->map(function($v) { return new Success($v * 2); })
                 ->value());
     }    
+    
+    function testProxyMap() {
+        $this->assertEquals(new Success(1), (new Success(new SuccessTestProxyMap()))->test());
+    }
+}
+
+class SuccessTestProxyMap {
+    function test() { return 1; }
 }
 

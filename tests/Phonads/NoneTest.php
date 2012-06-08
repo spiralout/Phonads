@@ -19,4 +19,17 @@ class Phonads_NoneTest extends PHPUnit_Framework_TestCase {
     function testNoneMap() {
         $this->assertTrue((new None)->map(function($x) { return 1; }) instanceof None);
     }
+    
+    function testValue() {
+        $this->setExpectedException('BadMethodCallException');
+        (new None())->value();
+    }
+    
+    function testProxyMap() {
+        $this->assertTrue((new None(new NoneTestProxyMap()))->test() instanceof None);
+    }
+}
+
+class NoneTestProxyMap {
+    function test() { return 1; }
 }

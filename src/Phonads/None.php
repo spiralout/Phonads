@@ -17,7 +17,8 @@ namespace Phonads;
  * Option container that represents no value
  */
 class None implements Monad, Option {
-
+    use ProxyMap;
+    
     /**
      * Map always returns another instance of None
      * 
@@ -34,6 +35,6 @@ class None implements Monad, Option {
      * @throws Exception
      */
     function value() {
-        throw new \Exception('Cannot get the value of None');
+        throw new \BadMethodCallException('Cannot get the value of None');
     }
 } 

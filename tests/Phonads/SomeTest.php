@@ -35,5 +35,13 @@ class Phonads_SomeTest extends PHPUnit_Framework_TestCase {
                 ->map(function($v) { return new Some($v * 2); })
                 ->value());
     }    
+    
+    function testProxyMap() {
+        $this->assertEquals(new Some(1), (new Some(new SomeTestProxyMap()))->test());
+    }
+}
+
+class SomeTestProxyMap {
+    function test() { return 1; }
 }
 
