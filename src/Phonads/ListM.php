@@ -35,7 +35,7 @@ class ListM implements Monad, \ArrayAccess, \Countable, \Iterator {
      */
     function map(\Closure $f) {
         return new self(
-            array_flatten(
+            $this->array_flatten(
                 array_map(
                     function($i) { return ($i instanceof self ? $i->value() : $i); },
                     array_map($f, $this->list))));
@@ -256,6 +256,28 @@ class ListM implements Monad, \ArrayAccess, \Countable, \Iterator {
     }
     
     
+    /**
+    * Flatten an array. Takes this: [[1],[2],[3],[4]] and turns it into this: [1,2,3,4]
+    *  
+    * @param array $a
+    * @return array
+    */    
+    private function array_flatten(array $a) {
+        $ab = [];
+
+        if (!is_array($a)) return [];
+
+        foreach ($a as $value) {
+            if (is_array($value)) {
+                $ab = array_merge($ab, $this->array_flatten($value));
+            } else {
+                array_push($ab, $value);
+            }
+        }
+
+        return $ab;
+    }
+
     /** @var array */
     private $list = [];
 }
