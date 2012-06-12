@@ -6,6 +6,7 @@ Quick Example:
 An example of what coding with Phonads looks like.
 
 ```php
+<?php
 function doSomethingWithValueFromDB() {
     return Match::on($this->getValueFromDB())
         ->None(function($_) { throw new \Exception('Could not retrieve thing from database!'); })
@@ -34,6 +35,7 @@ a non-object" errors. Using the Option monads (and the ProxyMap feature), you ca
 this:
 
 ```php
+<?php
 $result = getValueHopefully();
 if (!is_null($result)) {
     $result->doSomethingUseful();
@@ -42,6 +44,7 @@ if (!is_null($result)) {
 Into this:
 
 ```php
+<?php
 getValueHopefully()->doSomethingUseful();
 ```
 
@@ -54,6 +57,7 @@ a valid result of an operation. The Validation monad provides a specific mechani
 represent the Success or Failure of an operation so there is no ambiguity. For example:
 
 ```php
+<?php
 $result = commandThatMightFail();
 if ($result !== false) {
     $result->doSomethingUseful();
@@ -63,6 +67,7 @@ if ($result !== false) {
 Can become this:
 
 ```php
+<?php
 commandThatMightFail()->doSomethingUseful();
 ```
 
@@ -73,12 +78,14 @@ that contain a single value (Options and Validations), ProxyMap implements __cal
 forward method calls on the Monad object to the object contained within. For example:
 
 ```php
+<?php
 (new Some($object))->map(function($x) { $x->doSomething(); });
 ```
 
 Can be written as this:
 
 ```php
+<?php
 (new Some($object))->doSomething();
 ```
 
