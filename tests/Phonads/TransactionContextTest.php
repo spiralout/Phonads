@@ -15,6 +15,7 @@ require_once 'PHPUnit/Framework/TestCase.php';
 use Phonads\TransactionContext, Phonads\Transaction, Phonads\Success, Phonads\Failure;
 
 class Phonads_TransactionContextTest extends PHPUnit_Framework_TestCase {
+    
     function testValue() {
         $this->assertEquals(
             new Success(),

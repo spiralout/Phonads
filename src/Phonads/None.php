@@ -22,7 +22,7 @@ class None implements Monad, Option {
     /**
      * Map always returns another instance of None
      * 
-     * @param Closure $f
+     * @param \Closure $f
      * @return \Phonads\None
      */
     function map(\Closure $f) {
@@ -32,7 +32,7 @@ class None implements Monad, Option {
     /**
      * None has no value
      * 
-     * @throws Exception
+     * @throws \BadMethodCallException
      */
     function value() {
         throw new \BadMethodCallException('Cannot get the value of None');

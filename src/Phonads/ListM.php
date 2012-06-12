@@ -95,7 +95,6 @@ class ListM implements Monad, \ArrayAccess, \Countable, \Iterator {
      * @param mixed $item
      * @return \Phonads\ListM
      */
-
     function append($item) {
         return Match::on($item)
             ->ListM(function($list) {
